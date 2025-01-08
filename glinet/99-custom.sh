@@ -21,12 +21,12 @@ done
 # 网络设置
 if [ "$count" -eq 1 ]; then
    # 单网口设备 NAS模式
-   uci set network.lan.proto='dhcp'
+   uci set network.lan.ipaddr='10.0.0.2'
 elif [ "$count" -gt 1 ]; then
    # 多网口设备
-   uci set network.lan.ipaddr='192.168.8.1'
+   uci set network.lan.ipaddr='10.0.0.2'
    # 判断是否启用 PPPoE
-   if [[ "$ENABLE_PPPOE" == "yes" ]]; then
+   if [[ "$ENABLE_PPPOE" == "no" ]]; then
       echo "PPPoE is enabled."
       # 设置拨号信息
       uci set network.wan.proto='pppoe'                
